@@ -9,7 +9,10 @@ import { defaultValues, IFormLogin } from "./types";
 
 const schema = yup
   .object({
-    email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
+    email: yup
+    .string()
+    .email("E-mail inválido")
+    .required("Campo obrigatório"),
     password: yup
       .string()
       .min(6, "No minimo 6 caracteres")
@@ -27,6 +30,8 @@ const Login = () => {
     defaultValues,
     reValidateMode: "onChange",
   });
+
+  console.log(isValid)
 
   return (
     <Container>
@@ -49,7 +54,7 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Button title="Entrar"/>
         </Column>
       </LoginContainer>
     </Container>
